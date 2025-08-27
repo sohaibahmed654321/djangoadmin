@@ -1,6 +1,4 @@
 from django.apps import AppConfig
 
-
-class TumhariappConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
+class tumhariappConfig(AppConfig):
     name = 'tumhariapp'

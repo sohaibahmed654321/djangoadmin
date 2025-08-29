@@ -1,14 +1,16 @@
 from django.db import models
+from django.utils import timezone
 
 class Brand(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField(null=True, blank=True)  # ✅ description added
+    description = models.TextField(null=True, blank=True)
     website = models.URLField(null=True, blank=True)
     image = models.ImageField(upload_to="brands/", null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
+
 
 
 class Category(models.Model):
@@ -46,13 +48,15 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
-from django.db import models
+
 #abhi
+
+# User-submitted Contact Form
 class Contaact(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     message = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(default=timezone.now, editable=False)
 
     def __str__(self):
         return f"{self.name} - {self.email}"

@@ -1,7 +1,62 @@
 {% extends "base.html" %}
-{% block title %}Page Title{% endblock %}
+{% block title %}About Us | My Website{% endblock %}
 
 {% block content %}
-<h2>Welcome to {{ block.super }}</h2>
-<p>This is the page content.</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 text-center">
+            <h1 class="display-4 fw-bold text-success">🌟 About Us</h1>
+            <p class="lead text-muted mt-3">
+                Welcome to <b>My Website</b>! We are dedicated to building modern, secure and easy-to-use web applications.
+                Our mission is to provide users with a smooth experience where speed, security and design come together beautifully.
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4 mb-5 bg-white rounded text-center">
+                <h3 class="card-title text-primary">💡 Our Vision</h3>
+                <p class="card-text">
+                    To become a trusted platform where users can enjoy a seamless digital journey,
+                    backed by innovation and simplicity.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4 mb-5 bg-white rounded text-center">
+                <h3 class="card-title text-primary">🎯 Our Mission</h3>
+                <p class="card-text">
+                    Deliver reliable, secure, and user-friendly applications that empower people
+                    to achieve their goals effortlessly.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12 text-center">
+            <h2 class="fw-bold text-dark">🤝 Meet Our Team</h2>
+            <p class="text-muted">A group of passionate developers and designers who love creating amazing products.</p>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-3 mb-4 bg-light rounded text-center">
+                <h4>👨‍💻 Developer</h4>
+                <p>Expert in Django, Python & Databases.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-3 mb-4 bg-light rounded text-center">
+                <h4>🎨 Designer</h4>
+                <p>Crafting beautiful and responsive UI/UX.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-3 mb-4 bg-light rounded text-center">
+                <h4>📢 Marketing</h4>
+                <p>Spreading the word and connecting with users.</p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

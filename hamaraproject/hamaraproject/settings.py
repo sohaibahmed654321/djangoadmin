@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     "django.contrib.staticfiles",
+    "widget_tweaks",
     'tumhariapp'
 
 ]
@@ -125,8 +126,28 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+# development ke liye
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+# deployment ke liye (collectstatic ke baad)
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# settings.py
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+DEFAULT_FROM_EMAIL = "webmaster@localhost"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "yourgmail@gmail.com"   # apna Gmail
+EMAIL_HOST_PASSWORD = "your_app_password"  # Gmail App Password (not normal password)
+
 
 

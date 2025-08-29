@@ -1,7 +1,20 @@
 {% extends "base.html" %}
-{% block title %}Page Title{% endblock %}
+{% block title %}Contact Us{% endblock %}
 
 {% block content %}
-<h2>Welcome to {{ block.super }}</h2>
-<p>This is the page content.</p>
+<div class="container mt-5">
+  <h2>Contact Us</h2>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+</div>
 {% endblock %}

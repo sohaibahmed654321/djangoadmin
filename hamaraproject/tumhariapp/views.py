@@ -4,7 +4,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib import messages
-from .forms import SignUpForm  # custom signup form
+from .forms import SignUpForm, ContaactForm
+from django.core.mail import send_mail
+from django.conf import settings
+
+
+# custom signup form
 
 # Home view
 def home(request):
@@ -16,6 +21,15 @@ def about(request):
 
 # Contact page
 def contact(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
+
+        # Save to DB or send email (for now just showing message)
+        messages.success(request, f"Thanks {name}, your message has been received! ✅")
+        return redirect("contact")
+
     return render(request, "contact.html")
 
 # Signup view
@@ -52,3 +66,47 @@ def logout_view(request):
     auth_logout(request)
     messages.info(request, "You have been logged out.")
     return redirect("home")
+
+
+# def Contaact_view(request):
+#     if request.method == "POST":
+#         form = ContaactForm(request.POST)
+#         if form.is_valid():
+#             form.save()  # ✅ save in database
+#             return redirect('contact')  # form submit hone ke baad redirect
+#     else:
+#         form = ContaactForm()
+#
+#     return render(request, "contact.html", {"form": form})
+
+
+def Contaact_view(request):
+    if request.method == "POST":
+        form = ContaactForm(request.POST)
+        if form.is_valid():
+            contact = form.save()   # ✅ Database me save
+
+            # ✅ Email bhejna
+            subject = f"New Contact Message from {contact.name}"
+            message = f"""
+You have received a new contact form submission:
+
+Name: {contact.name}
+Email: {contact.email}
+Message:
+{contact.message}
+"""
+            send_mail(
+                subject,
+                message,
+                settings.DEFAULT_FROM_EMAIL,
+                ["sohaib@gmail.com"],  # apna email daalo jahan receive karna hai
+                fail_silently=False,
+            )
+
+            messages.success(request, "Your message has been sent successfully!")
+            return redirect("contact")
+    else:
+        form = ContaactForm()
+
+    return render(request, "contact.html", {"form": form})

@@ -5,23 +5,15 @@ from .models import Product, Brand, Category, Contact, Contaact
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
-    list_display = ('name', 'website', 'thumbnail', 'created_at')
-    search_fields = ('name',)
+    list_display = ("name", "website", "description", "image_tag", "created_at")
+    search_fields = ("name",)
+    list_filter = ("created_at",)
 
-    fieldsets = (
-        ("Basic Info", {"fields": ("name", "website", "description")}),
-        ("Media", {"fields": ("image",)}),
-    )
-
-    def thumbnail(self, obj):
+    def image_tag(self, obj):
         if obj.image:
-            return format_html(
-                '<img src="{}" width="50" height="50" style="object-fit:cover;border-radius:5px;" />',
-                obj.image.url
-            )
+            return format_html('<img src="{}" style="width:60px; height:60px; border-radius:8px;" />', obj.image.url)
         return "No Image"
-
-    thumbnail.short_description = 'Logo'
+    image_tag.short_description = "Logo"
 
 
 
@@ -90,12 +82,12 @@ class ContactAdmin(admin.ModelAdmin):
 
     thumbnail.short_description = 'Image'
 
-from django.contrib import admin
-from .models import Contact
 
 #abhi
 
 @admin.register(Contaact)
 class ContaactAdmin(admin.ModelAdmin):
-    list_display = ("name", "email", "created_at")
+    list_display = ("name", "email", "message", "created_at")
     search_fields = ("name", "email")
+    list_filter = ("created_at",)
+

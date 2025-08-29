@@ -1,7 +1,39 @@
 {% extends "base.html" %}
-{% block title %}Page Title{% endblock %}
+{% block title %}Home | My Website{% endblock %}
 
 {% block content %}
-<h2>Welcome to {{ block.super }}</h2>
-<p>This is the page content.</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1 class="display-4 fw-bold text-primary">😄 Welcome to My Website</h1>
+            <p class="lead text-muted">
+                This is a modern Django-powered web application.
+                Explore features, create your account and enjoy seamless login/logout system.
+            </p>
+            <a href="{% url 'signup' %}" class="btn btn-success btn-lg mt-3">Create Account</a>
+            <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg mt-3">Login</a>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                <h3 class="card-title text-center">🔥 Fast</h3>
+                <p class="card-text text-center">Our system is super fast and reliable.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                <h3 class="card-title text-center">🔒 Secure</h3>
+                <p class="card-text text-center">All data is protected with top-notch security.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                <h3 class="card-title text-center">🚀 Easy</h3>
+                <p class="card-text text-center">Super easy to use interface with clean design.</p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

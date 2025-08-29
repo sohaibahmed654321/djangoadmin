@@ -15,7 +15,7 @@ class SignUpForm(UserCreationForm):
             field.widget.attrs.update({'class': 'form-control', 'placeholder': field.label})
 
 
-class ContactForm(forms.ModelForm):
+class ContaactForm(forms.ModelForm):
     class Meta:
         model = Contact
         fields = ["name", "email", "message"]
